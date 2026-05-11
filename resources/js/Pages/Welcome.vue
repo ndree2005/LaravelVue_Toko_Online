@@ -32,7 +32,7 @@ defineProps({
                         <p class="text-3xl font-bold text-blue-600">
                             {{ totalProduk }}
                         </p>
-                        <p class="text-gray-500 mt-1">Produk Tersedia</p>
+                        <p class="text-gray-500 mt-1">Produk Tersedia disini</p>
                     </div>
 
                     <div class="card text-center">
