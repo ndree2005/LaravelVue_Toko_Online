@@ -147,14 +147,6 @@ router.on("success", () => {
             <slot />
         </main>
 
-        <!-- FOOTER -->
-        <footer class="bg-white border-t border-gray-200 mt-16">
-            <div
-                class="max-w-7xl mx-auto px-4 py-8 text-center text-gray500 text-sm"
-            >
-                © {{ new Date().getFullYear() }} Toko Online. Dibuat dengan
-                Laravel 11 + Vue 3 + Inertia.js
-            </div>
-        </footer>
+        <!-- FOOTER -->        
     </div>
 </template>
