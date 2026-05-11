@@ -205,6 +205,9 @@ Route::middleware(['auth', 'role:admin'])
         |--------------------------------------------------------------------------
         */
 
+        Route::post('/categories/{category}/toggle', [CategoryController::class,'toggle'])
+            ->name('categories.toggle');
+            
         //Route::get('/reports', [ReportController::class, 'index'])
         //    ->name('reports.index');
 //
