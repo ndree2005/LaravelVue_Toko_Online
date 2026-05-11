@@ -185,7 +185,7 @@ Route::middleware(['auth', 'role:admin'])
         |--------------------------------------------------------------------------
         */
 
-        //Route::resource('categories', CategoryController::class);
+        Route::resource('categories', CategoryController::class);
 
         /*
         |--------------------------------------------------------------------------
