@@ -1,8 +1,9 @@
 <script setup>
+
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import Navbar from "@/Components/Navbar.vue";
 import { Head } from "@inertiajs/vue3";
 import AppLayout from "@/Layouts/AppLayout.vue";
+
 </script>
 
 <template>
