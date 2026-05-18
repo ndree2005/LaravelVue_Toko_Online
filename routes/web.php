@@ -132,7 +132,7 @@ Route::middleware(['auth', 'role:seller'])
         Route::get('/dashboard', [SellerDashboard::class, 'index'])
             ->name('dashboard');
 
-        //Route::resource('products', SellerProductController::class);
+        Route::resource('products', SellerProductController::class);
 
         /*
         |--------------------------------------------------------------------------
