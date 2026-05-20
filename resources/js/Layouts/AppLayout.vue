@@ -147,6 +147,6 @@ router.on("success", () => {
             <slot />
         </main>
 
-        <!-- FOOTER -->        
+        <!-- FOOTER -->
     </div>
 </template>
