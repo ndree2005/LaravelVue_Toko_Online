@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { Link, usePage, router } from "@inertiajs/vue3";
+import { Toaster } from "vue3-hot-toast";
 
 const page = usePage();
 const auth = computed(() => page.props.auth?.user);
@@ -15,6 +16,9 @@ router.on("success", () => {
 
 <template>
     <div class="min-h-screen bg-gray-50">
+        
+        <Toaster />
+        
         <!-- NAVBAR -->
         <nav
             class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40"

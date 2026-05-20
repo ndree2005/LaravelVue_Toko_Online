@@ -1,6 +1,7 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { useForm, Link, Head } from "@inertiajs/vue3";
+import { toast } from "vue3-hot-toast";
 
 const form = useForm({
     name: "",
@@ -10,7 +11,22 @@ const form = useForm({
     sort_order: 0,
 });
 
-const submit = () => form.post(route("admin.categories.store"));
+const submit = () => {
+    form.post(route("admin.categories.store"), {
+        onSuccess: () => {
+            toast.success("Kategori berhasil ditambahkan!", {
+                position: "top-center",
+                duration: 3000,
+            });
+            form.reset();
+        },
+        onError: () => {
+            toast.error("Gagal menambahkan kategori!", {
+                position: "top-right",
+            });
+        },
+    });
+};
 </script>
 
 <template>

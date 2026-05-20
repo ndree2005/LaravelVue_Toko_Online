@@ -1,6 +1,7 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { Head, Link, router } from "@inertiajs/vue3";
+import { toast } from "vue3-hot-toast";
 
 defineProps({
     categories: Object,
@@ -8,7 +9,19 @@ defineProps({
 
 const hapus = (id) => {
     if (confirm("Yakin ingin menghapus kategori ini?")) {
-        router.delete(route("admin.categories.destroy", id));
+        router.delete(route("admin.categories.destroy", id), {
+            onSuccess: () => {
+                toast.success("Kategori berhasil dihapus!", {
+                    position: "top-right",
+                    duration: 3000,
+                });
+            },
+            onError: () => {
+                toast.error("Gagal menghapus kategori!", {
+                    position: "top-right",
+                });
+            },
+        });
     }
 };
 </script>

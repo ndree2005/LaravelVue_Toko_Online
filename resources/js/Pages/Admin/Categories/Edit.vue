@@ -1,6 +1,7 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { useForm, Link, Head } from "@inertiajs/vue3";
+import { toast } from "vue3-hot-toast";
 
 // PERBEDAAN 1: Terima data kategori dari controller
 const props = defineProps({
@@ -18,7 +19,19 @@ const form = useForm({
 
 // PERBEDAAN 3: Gunakan PUT dan sertakan ID
 const submit = () => {
-    form.put(route("admin.categories.update", props.category.id));
+    form.put(route("admin.categories.update", props.category.id), {
+        onSuccess: () => {
+            toast.success("Kategori berhasil diperbarui!", {
+                position: "top-right",
+                duration: 3000,
+            });
+        },
+        onError: () => {
+            toast.error("Gagal memperbarui kategori!", {
+                position: "top-right",
+            });
+        },
+    });
 };
 </script>
 
