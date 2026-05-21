@@ -1,5 +1,6 @@
 <script setup>
 import { useForm, Link, Head } from "@inertiajs/vue3";
+import { Toaster, toast } from "vue3-hot-toast";
 
 const form = useForm({
     name: "",
@@ -11,6 +12,17 @@ const form = useForm({
 
 const submit = () => {
     form.post(route("register"), {
+        onSuccess: () => {
+            toast.success("Akun berhasil dibuat!", {
+                position: "top-center",
+                duration: 3000,
+            });
+        },
+        onError: () => {
+            toast.error("Gagal mendaftar. Periksa kembali data kamu.", {
+                position: "top-center",
+            });
+        },
         onFinish: () => form.reset("password", "password_confirmation"),
     });
 };
@@ -21,6 +33,7 @@ const submit = () => {
         class="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4"
     >
         <Head title="Daftar" />
+        <Toaster />
 
         <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
             <div class="text-center mb-8">

@@ -1,7 +1,9 @@
 <script setup>
 import { useForm, Link, Head } from "@inertiajs/vue3";
+import { watch } from "vue";
+import { Toaster, toast } from "vue3-hot-toast";
 
-defineProps({ status: String });
+const props = defineProps({ status: String });
 
 const form = useForm({
     email: "",
@@ -11,9 +13,33 @@ const form = useForm({
 
 const submit = () => {
     form.post(route("login"), {
+        onSuccess: () => {
+            toast.success("Berhasil masuk!", {
+                position: "top-center",
+                duration: 3000,
+            });
+        },
+        onError: () => {
+            toast.error("Email atau password tidak sesuai.", {
+                position: "top-center",
+            });
+        },
         onFinish: () => form.reset("password"),
     });
 };
+
+watch(
+    () => props.status,
+    (status) => {
+        if (status) {
+            toast.success(status, {
+                position: "top-right",
+                duration: 3000,
+            });
+        }
+    },
+    { immediate: true },
+);
 </script>
 
 <template>
@@ -21,6 +47,7 @@ const submit = () => {
         class="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4"
     >
         <Head title="Masuk" />
+        <Toaster />
 
         <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
             <div class="text-center mb-8">
